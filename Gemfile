@@ -9,6 +9,12 @@ gem 'devise'
 
 gem 'rb-readline'
 
+gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap-sass', '~> 3.2.0'
+
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
