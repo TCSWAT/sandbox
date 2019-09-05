@@ -1,1 +1,147 @@
-Show
+<style>
+  .user-profile {
+    padding-top: 2vh;
+  }
+</style>
+
+<div class="user-profile">
+  <div class="container">
+    <div class="row my-2">
+
+      <div class="col-lg-4 order-lg-1 text-center">
+        <%= image_tag "user-default.png",  class: "mx-auto img-fluid img-circle d-block", alt: "avatar" %>
+        <h6 class="mt-2">Upload a different photo</h6>
+        <label class="custom-file">
+          <input type="file" id="file" class="custom-file-input">
+          <span class="custom-file-control">Choose file</span>
+        </label>
+      </div>
+
+      <div class="col-lg-8 order-lg-2">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+          </li>
+        </ul>
+          <div class="tab-content py-4">
+            <div class="tab-pane active" id="profile">
+              <h5 class="mb-3">User Info</h5>
+              <div class="column">
+                <div class="col-md-6">
+                  <p>
+                    <%= current_user.first_name %> <%= current_user.last_name %>
+                    <br>
+                    <%= current_user.email %>
+                  </p>
+                  <hr>
+                  <h6>Current Address</h6>
+                  <p>
+                    Flat 88, My Street, Hounslow, London, UK. TW3 1QQ.
+                  </p>
+                </div>
+                <hr>
+                <div class="col-md-6">
+                  <h6>Recently used services</h6>
+                  <a href="#" class="badge badge-dark badge-pill">Utility</a>
+                  <a href="#" class="badge badge-dark badge-pill">Council</a>
+                  <a href="#" class="badge badge-dark badge-pill">DVLA</a>
+                  <a href="#" class="badge badge-dark badge-pill">Bank</a>
+                  <a href="#" class="badge badge-dark badge-pill">Water</a>
+                  <a href="#" class="badge badge-dark badge-pill">Electricity</a>
+                  <a href="#" class="badge badge-dark badge-pill">RoyalMail</a>
+                  <a href="#" class="badge badge-dark badge-pill">Amazon</a>
+                </div>
+              </div>
+                <!--/row-->
+            </div>
+            <div class="tab-pane" id="messages">
+              <div class="col-md-12">
+                <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Activity Summary</h5>
+                <span class="badge badge-primary"><i class="fa fa-user"></i> 5 Pending</span>
+                <span class="badge badge-success"><i class="fa fa-cog"></i> 8 Success</span>
+                <span class="badge badge-danger"><i class="fa fa-eye"></i> 2 Clarification</span>
+              </div>
+              <br>
+              <table class="table table-hover table-striped">
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>RoyalMail</strong> accepted the address change request on <strong>05-09-2019 8:15PM</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>HSBC Bank</strong> request is pending with response
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Amazon</strong> accepted the address change request on <strong>01-09-2019 5:01PM</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>DVLA</strong> pending with more clarification
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>SSE Electical</strong> failed the address change request on <strong>03-09-2019 11:34AM</strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane" id="edit">
+              <form role="form">
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="text" value=<%= current_user.first_name%>>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="text" value=<%= current_user.last_name%>>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="email" value=<%= current_user.email%>>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="password" value=<%= current_user.password %>>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                  <div class="col-lg-9">
+                    <input class="form-control" type="password" value=<%= current_user.password_confirmation %>>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-lg-9">
+                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                    <input type="button" class="btn btn-primary" value="Save Changes">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
