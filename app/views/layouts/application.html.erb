@@ -67,7 +67,7 @@
               <a class="nav-link" href="#">Services <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Manage Address</a>
+              <%= link_to('Manage Address', address_user_path(id: current_user.id), class: "nav-link") %>
             </li>
           </ul>
 
@@ -84,7 +84,7 @@
                 Hi <%= current_user.email %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to('Profile', destroy_user_session_path, method: :delete, class: "nav-link") %>
+                <%= link_to('Profile', user_path(id: current_user.id), class: "nav-link") %>
                 <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
               </div>
             </li>
