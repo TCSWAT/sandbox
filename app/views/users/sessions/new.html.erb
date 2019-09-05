@@ -1,26 +1,104 @@
-<h2>Log in</h2>
+<style>
+  .logo {
+    padding-top: 5vh;
+    color: gray;
+    text-align: center;
+    font-size: 9vh;
+  }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-  </div>
+  .caption {
+    color: gray;
+    text-align: center;
+  }
 
-  <div class="form-group">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-  </div>
+  .red-text{
+    color: red
+  }
 
-  <% if devise_mapping.rememberable? %>
+  .login {
+    margin: 3vh;
+    padding-top: 5vh;
+  }
+
+  .login-btn {
+    display: block;
+    width: 100%;
+    height: 7vh;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+  }
+
+  .form-control {
+    height: 7vh;
+  }
+
+  a {
+    color: gray;
+  }
+
+  .forget-password {
+    padding-top: 3vh;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .sign-up {
+    padding-top: 3vh;
+    text-align: center;
+  }
+
+  .sign-up-link {
+    text-decoration: underline;
+  }
+
+  .gray-text {
+    color: gray;
+  }
+
+</style>
+
+<h1 class="logo">MO<span class="red-text">VED</span></h1>
+<h5 class="caption">EVERYWHERE</h5>
+
+<div class="login">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.email_field :email, autofocus: true, placeholder: "Email or mobile number", autocomplete: "email", class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= f.password_field :password, placeholder: "Password", autocomplete: "current-password", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group">
+        <%= f.check_box :remember_me %>
+        <%= f.label "Keep me singned in", class: "gray-text" %>
+      </div>
+    <% end %>
+
+    <%= f.submit "Sign in", class: "login-btn" %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-default" %>
+  <div class="forget-password">
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot password?", new_password_path(resource_name) %><br />
+    <% end %>
   </div>
-<% end %>
 
-<%= render "users/shared/links" %>
+  <div class="sign-up">
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+
+
+      <%= link_to new_registration_path(resource_name) do %>
+        <div class="btn-action">
+          <p> New to MO<span class="red-text">VED</span>? <span class="sign-up-link">Sign up now</span></p>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+
+</div>
