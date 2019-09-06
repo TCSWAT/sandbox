@@ -39,11 +39,14 @@
         margin-left : 2vh;
         margin-right : 2vh;
       }
+
+      .footer {
+        bottom: 0;
+      }
     }
 
     .footer {
       position: absolute;
-      bottom: 0;
       width: 100%;
       font-size: 1.5vh;
       /* Set the fixed height of the footer here */
@@ -92,13 +95,6 @@
 
         </div>
       </nav>
-
-      <footer class="footer">
-        <div class="container">
-            &#169; 2019 Tata Consultancy Services. All Rights Reserved.
-        </div>
-      </footer>
-
     <% else %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
@@ -106,5 +102,11 @@
 
     <%= yield %>
   </body>
+
+  <footer class="footer">
+    <div class="container">
+      &#169; 2019 Tata Consultancy Services. All Rights Reserved.
+    </div>
+  </footer>
 
 </html>
