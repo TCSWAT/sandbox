@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :services do
+  end
+
 end

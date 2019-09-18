@@ -1,0 +1,17 @@
+<style>
+  .service-title {
+    text-align: center;
+  }
+
+  .back-link {
+    text-decoration: none;
+  }
+
+</style>
+
+<div class="container">
+
+  <%= link_to('Back', services_path, class: "back-link") %>
+
+  <h3 class="service-title"> <%= @service.name %> </h3>
+</div>
