@@ -59,8 +59,12 @@
 
 </style>
 
-<h1 class="logo">MO<span class="red-text">VED</span></h1>
-<h5 class="caption">EVERYWHERE</h5>
+<h1 class="logo">Sandbox<span class="red-text">API</span></h1>
+<%
+=begin%>
+ <h5 class="caption">EVERYWHERE</h5>
+<%
+=end%>
 
 <div class="login">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -94,7 +98,7 @@
 
       <%= link_to new_registration_path(resource_name) do %>
         <div class="btn-action">
-          <p> New to MO<span class="red-text">VED</span>? <span class="sign-up-link">Sign up now</span></p>
+          <p> New to Sandbox<span class="red-text">API</span>? <span class="sign-up-link">Sign up now</span></p>
         </div>
       <% end %>
 
