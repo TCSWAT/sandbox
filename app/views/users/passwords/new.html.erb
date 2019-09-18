@@ -1,16 +1,87 @@
-<h2>Forgot your password?</h2>
+<style>
+  .logo {
+    padding-top: 5vh;
+    color: gray;
+    text-align: center;
+    font-size: 9vh;
+  }
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  .caption {
+    color: gray;
+    text-align: center;
+  }
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  .red-text{
+    color: red
+  }
+
+  .forget-password {
+    margin: 3vh;
+    padding-top: 4vh;
+  }
+
+  .forget-btn {
+    display: block;
+    width: 100%;
+    height: 7vh;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+  }
+
+  a {
+    color: gray;
+  }
+
+  .sign-in {
+    padding-top: 3vh;
+    text-align: center;
+  }
+
+  .sign-up {
+    padding-top: 3vh;
+    text-align: center;
+  }
+
+  .actions {
+    margin-top: 2vh;
+  }
+
+  .sign-up-link {
+    text-decoration: underline;
+  }
+
+</style>
+
+<h1 class="logo">MO<span class="red-text">VED</span></h1>
+<h5 class="caption">Forgot your password?</h5>
+
+<div class="forget-password">
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", class: "forget-btn" %>
+    </div>
+  <% end %>
+
+  <div class="sign-in">
+    <%= link_to "Log in", new_session_path(resource_name) %><br />
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="sign-up">
+    <%= link_to new_registration_path(resource_name) do %>
+      <div class="btn-action">
+        <p> New to MO<span class="red-text">VED</span>? <span class="sign-up-link">Sign up now</span></p>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
-<%= render "users/shared/links" %>
+</div>
