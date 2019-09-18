@@ -14,4 +14,14 @@ Rails.application.routes.draw do
   resources :services do
   end
 
+  resources :clients do
+  end
+
+  get 'docs' => 'docs#index', as: :docs
+
+  namespace :api do
+    namespace :v1 do
+      resources :clients
+    end
+  end
 end

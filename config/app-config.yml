@@ -1,0 +1,15 @@
+## Environment settings
+defaults: &defaults
+  host: localhost
+  port: 3000
+  protocol: http
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
