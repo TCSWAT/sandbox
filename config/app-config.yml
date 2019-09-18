@@ -12,4 +12,7 @@ test:
   <<: *defaults
 
 production:
+  host: swat-sandbox.herokuapp.com
+  port: 443
+  protocol: https
   <<: *defaults
