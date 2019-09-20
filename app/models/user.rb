@@ -10,4 +10,20 @@ class User < ApplicationRecord
   def name
     self.first_name + " " + self.last_name
   end
+
+  def self.from_api_key(api_key)
+    token_data = JsonWebToken.decode(api_key)
+
+    if token_data.nil?
+      return nil, "Invalid JWT token", :unauthorized
+    else
+      user = User.where(id: token_data["user_id"]).first
+    end
+
+    if user.present?
+      return user, nil, 200
+    else
+      return nil, "Invalid user token", :bad_request
+    end
+  end
 end

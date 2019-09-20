@@ -1,7 +1,7 @@
 class Api::V1::ClientsController < ApplicationController
 
   skip_before_action :authenticate_user!
-  before_action :authenticate_api_key!
+  before_action :authenticate_user_api_key!
 
   swagger_controller :clients, "Clients Management"
 
@@ -12,7 +12,7 @@ class Api::V1::ClientsController < ApplicationController
   end
 
   def index
-    render json: { clients: Client.all.to_json() }
+    @clients = Client.all
   end
 
   swagger_api :create do
@@ -23,18 +23,8 @@ class Api::V1::ClientsController < ApplicationController
     response :unauthorized
   end
   def create
-    client = current_user.clients.new(name: params[:name])
-    if client.save
-      render json: { name: client.name, api_key: client.api_key }, status: :created
-    else
-      render json: { error: client.errors }, status: :bad_request
-    end
-  end
-
-
-  private
-  def authenticate_api_key!
-    render json: { error: "Invalid API key" }, status: 401 if request.env["HTTP_X_API_KEY"] != "abc"
+    @client = current_user.clients.create(name: params[:name])
+    render 'show'
   end
 
 end

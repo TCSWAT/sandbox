@@ -1,6 +1,8 @@
 class Api::V1::UsersController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:create]
+  skip_before_action :authenticate_user!
+  before_action :authenticate_user_api_key!, only: [:profile]
+
 
   swagger_controller :users, "User Management"
 
@@ -18,11 +20,11 @@ class Api::V1::UsersController < ApplicationController
     response :created
   end
   def create
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)
+    if @user.save
       render 'profile', status: :created
     else
-      render json: { error: user.errors }, status: :bad_request
+      render json: { error: @user.errors }, status: :bad_request
     end
   end
 
@@ -37,34 +39,6 @@ class Api::V1::UsersController < ApplicationController
   def profile
     @user = current_user
   end
-
-  swagger_api :create do
-    summary 'Sign in a user and provide api_key'
-    param :form, :'user[email]', :string, :required, 'Email'
-    param :form, :'user[password]', :password, :required, 'Password'
-    response :created
-    response :unauthorized
-  end
-  # POST /resource/sign_in
-  def create
-    resource = warden.authenticate!(auth_options)
-    sign_in(resource_name, resource)
-    # Clearing out the session cookie on API auths
-    # session.clear
-    render json: { api_key: resource.generate_api_key }, status: :created
-  end
-
-  swagger_api :destroy do
-    summary 'Signout a user'
-    response :ok
-    response :unprocessable_entity
-  end
-  # DELETE /resource/sign_out
-  def destroy
-    Rails.cache.delete User.cached_api_key(request.env['HTTP_X_API_KEY'])
-    head :ok
-  end
-
 
   private
   def user_params
