@@ -33,6 +33,13 @@ Rails.application.routes.draw do
           post :profile
         end
       end
+
+      resources :services do
+        collection do
+          post :weather
+        end
+      end
+
     end
   end
 end

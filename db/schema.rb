@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_132127) do
+ActiveRecord::Schema.define(version: 2019_09_23_092212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_132127) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "service_type", default: 0, null: false
     t.index ["auth_type"], name: "index_services_on_auth_type"
     t.index ["status"], name: "index_services_on_status"
   end
